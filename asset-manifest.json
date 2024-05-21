@@ -1,10 +1,13 @@
 {
   "files": {
-    "main.js": "/atividades-react/static/js/main.5bd102d7.js",
+    "main.css": "/atividades-react/static/css/main.2de99001.css",
+    "main.js": "/atividades-react/static/js/main.4f365e15.js",
     "index.html": "/atividades-react/index.html",
-    "main.5bd102d7.js.map": "/atividades-react/static/js/main.5bd102d7.js.map"
+    "main.2de99001.css.map": "/atividades-react/static/css/main.2de99001.css.map",
+    "main.4f365e15.js.map": "/atividades-react/static/js/main.4f365e15.js.map"
   },
   "entrypoints": [
-    "static/js/main.5bd102d7.js"
+    "static/css/main.2de99001.css",
+    "static/js/main.4f365e15.js"
   ]
 }
