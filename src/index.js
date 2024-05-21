@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ReactDOM from 'react-dom/client';
 import List from "./List";
+import './style.css';
 
 function MyForm() {
   const [name, setName] = useState("");
