@@ -1,0 +1,61 @@
+import { useState } from "react";
+import ReactDOM from 'react-dom/client';
+import List from "./List";
+import './style.css';
+
+function MyForm() {
+  const [name, setName] = useState("");
+  const [atribuicao, setAtribuicao] = useState("");
+  const [listaAtividades, setListaAtividades] = useState([]);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (name.trim() !== "" && atribuicao.trim() !== "") {
+      setListaAtividades([...listaAtividades,{nome:name,atribuicao:atribuicao}])
+      setName("");
+      setAtribuicao("");
+    }
+  };
+
+  const handleDelete = (index) => {
+    const newListaAtividades = listaAtividades.filter((_, i) => i !== index);
+    setListaAtividades(newListaAtividades);
+  };
+
+  const handleEdit = (index) => {
+    const newAtividade = prompt("Edite nome da tarefa:", listaAtividades[index].atividade);
+    const newAtribuicao = prompt("Edite atribuição da tarefa:", listaAtividades[index].atribuicao);
+    if (newAtividade !== null && newAtividade.trim() !== "" && newAtribuicao !== null && newAtribuicao.trim() !== "") {
+      const newListaAtividades = listaAtividades.map((item, i) => (i === index ? { atividade: newAtividade, atribuicao: newAtribuicao } : item));
+      setListaAtividades(newListaAtividades);
+    }
+  };
+
+  return (
+    <>
+      <form onSubmit={handleSubmit}>
+        <label>Digite a sua tarefa:
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </label>
+        <br />
+        <label> Atribuído a:
+          <input
+            type="text"
+            value={atribuicao}
+            onChange={(e) => setAtribuicao(e.target.value)}
+          />
+        </label>
+        <br />
+        <input type="submit" />
+      </form>
+      <List nomes={name} atribuicao={atribuicao} delete={handleDelete} editar={handleEdit} />
+    </>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<MyForm />);
